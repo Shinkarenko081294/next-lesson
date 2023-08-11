@@ -1,12 +1,23 @@
+'use client'
 import Link from "next/link";
+import {usePosts} from "@/store";
+import {shallow} from "zustand/shallow";
+import {useEffect} from "react";
 
-type Posts = {
-    posts: any[]
-}
+export const Posts = ()=>{
+    const [posts, loading, getAllPosts] = usePosts(state => [
+        state.posts,
+        state.loading,
+        state.getAllPosts
 
-export const Posts = ({posts}:Posts)=>{
+    ], shallow)
+    useEffect(()=>{
+        getAllPosts()
+    }, [getAllPosts])
     return(
-        <ul>
+        {loading
+            ? (<h3>Loading...</h3>)
+            : (<ul>
             {posts.map((post:any) =>{
                 return(
                     <li key={post.id}>
@@ -14,6 +25,7 @@ export const Posts = ({posts}:Posts)=>{
                     </li>
                 )
             })}
-        </ul>
+        </ul>)
+        }
     )
 }
