@@ -8,8 +8,7 @@ export const PostSearch = () =>{
     const getPostsBySearch = usePosts(state => state.getPostsBySearch)
     const handelSubmit: FormEventHandler<HTMLFormElement> = async (event) =>{
         event.preventDefault()
-
-        const posts = await getPostsBySearch(search)
+        await getPostsBySearch(search)
     }
     return(
         <form onSubmit={handelSubmit} className={'search-posts'}>

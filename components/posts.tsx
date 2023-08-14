@@ -15,17 +15,16 @@ export const Posts = ()=>{
         getAllPosts()
     }, [getAllPosts])
     return(
-        {loading
-            ? (<h3>Loading...</h3>)
-            : (<ul>
-            {posts.map((post:any) =>{
-                return(
-                    <li key={post.id}>
-                        <Link href={`/blog/${post.id}`}>{post.title}</Link>
-                    </li>
-                )
-            })}
-        </ul>)
-        }
+        loading
+            ? <h3>Loading...</h3>
+            : <ul>
+                {posts.map((post:any) =>{
+                    return(
+                        <li key={post.id}>
+                            <Link href={`/blog/${post.id}`}>{post.title}</Link>
+                        </li>
+                    )
+                })}
+            </ul>
     )
 }

@@ -1,12 +1,11 @@
-'use client'
-// import {Metadata} from "next";
 import {Posts} from "@/components/posts";
 import {PostSearch} from "@/components/postSearch";
+import {Metadata} from "next";
 
 
-// export const metadata: Metadata = {
-//     title: 'Blog'
-// }
+export const metadata: Metadata = {
+    title: 'Blog'
+}
 
 export default function Blog(){
     return (
